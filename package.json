@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "animate.css": "^3.7.2",
+    "axios": "^0.24.0",
     "core-js": "^3.4.4",
     "vue": "^2.6.10",
     "vue-fullpage.js": "^0.1.5",

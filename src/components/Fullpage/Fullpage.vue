@@ -44,8 +44,9 @@
   import AboutMe from "./AboutMe/AboutMe";
   import Skill from "./Skill/Skill";
   import ContactMe from './ContactMe/ContactMe';
-  import MyExperience from './MyExperience/MyExperience'
-  import MyProjects from './MyProjects/MyProjects'
+  import MyExperience from './MyExperience/MyExperience';
+  import MyProjects from './MyProjects/MyProjects';
+  import axios from "axios"
 
   export default {
     name: "Fullpage",
@@ -116,6 +117,15 @@
 	mounted(){
 		// this.$refs.audio.play();
 		// this.playingState = true;
+		var api = "http://1.12.248.33:8804/api/index/add";
+		      axios
+		        .get(api)
+		        .then((res) => {
+		          console.log(res);
+		        })
+		        .catch((er) => {
+		          console.log(er);
+		        });
 	},
     created() {
         this.refreshPath()
