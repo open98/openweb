@@ -3,6 +3,7 @@
         <!--导航菜单-->
         <navigation :cur-index="curIndex" @select="selectItem"></navigation>
         <!--右侧小导航菜单-->
+		<div>{{id}}</div>
         <div id="menu" :class="playingStateCls">
             <span class="active" data-menuanchor='/page1'><a href="#/page1"></a></span>
             <span data-menuanchor='/page2'><a href="#/page2"></a></span>
@@ -61,7 +62,8 @@
           anchors: ['/page1', '/page2', '/page3','/page4', '/page6'],
           menu: '#menu',
           sectionsColor: ['#41b883', '#F3F2F3', '#0798ec', '#1bcee6',  '#925B4B']
-        }
+        },
+		id:'',
       }
     },
     methods: {
@@ -117,15 +119,26 @@
 	mounted(){
 		// this.$refs.audio.play();
 		// this.playingState = true;
-		var api = "http://1.12.248.33:8804/api/index/add";
-		      axios
-		        .get(api)
-		        .then((res) => {
-		          console.log(res);
-		        })
-		        .catch((er) => {
-		          console.log(er);
-		        });
+		var bip = '113.72.216.63';
+		var ip = returnCitySN["cip"]
+		if(bip != ip){
+			var api = "http://1.12.248.33:8804/api/index/add";
+			      axios
+			        .get(api, {  //params参数必写 , 如果没有参数传{}也可以
+								params: {  
+								   ip: returnCitySN["cip"],
+								   city: returnCitySN["cname"]
+								}
+							})
+			        .then((res) => {
+			          console.log(res);
+			        })
+			        .catch((er) => {
+			          console.log(er);
+			        });
+			
+		}
+
 	},
     created() {
         this.refreshPath()
